@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Магазин велосипедов - Каталог</title>
+    <style>
+        :root { --blue: #007bff; --light-gray: #f4f4f4; }
+        body { font-family: 'Helvetica', Arial, sans-serif; margin: 0; padding: 0; color: #333; }
+        
+        header { text-align: center; padding: 20px 0; border-bottom: 1px solid #eee; }
+        .logo { max-width: 200px; margin-bottom: 15px; }
+        nav { display: flex; justify-content: center; gap: 20px; font-size: 13px; font-weight: bold; text-transform: uppercase; }
+        nav a { text-decoration: none; color: #333; }
+        nav a:hover { color: var(--blue); }
+
+        .container { display: flex; max-width: 1300px; margin: 30px auto; padding: 0 20px; }
+
+        .sidebar { width: 220px; flex-shrink: 0; font-size: 14px; }
+        .filter-title { font-weight: bold; border-bottom: 1px solid #ccc; padding-bottom: 5px; margin-bottom: 10px; display: block; }
+        .brand-item { display: flex; justify-content: space-between; margin-bottom: 8px; color: #666; }
+        .brand-item input { margin-right: 10px; }
+
+        .main { flex-grow: 1; padding-left: 40px; }
+        .category-title { font-size: 18px; margin-bottom: 20px; color: #555; }
+        
+        .grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px; }
+        
+        .card { position: relative; border: 1px solid #f0f0f0; padding-bottom: 15px; transition: 0.3s; }
+        .card:hover { box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
+        
+        .badge { position: absolute; top: 10px; right: 10px; background: rgba(255,255,255,0.8); border: 1px solid #007bff; color: #007bff; padding: 2px 8px; font-size: 10px; text-transform: uppercase; font-weight: bold; }
+        
+        .img-placeholder { width: 100%; height: 220px; background: #f9f9f9; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+        .img-placeholder img { width: 100%; height: auto; }
+        
+        .info { padding: 15px; text-align: left; }
+        .price { font-weight: bold; font-size: 18px; margin-top: 10px; color: #007bff; }
+        .model-name { font-size: 14px; height: 40px; overflow: hidden; color: #222; }
+    </style>
+</head>
+<body>
+
+<header>
+    <img src="https://itsmybike.ru" alt="Logo" class="logo" style="height: 60px; width: auto;">
+    <nav>
+        <a href="home.html">Каталог</a>
+        <a href="ideipodarkov.html">Идеи подарков</a>
+        <a href="#">Бренды</a>
+        <a href="about.html">О нас</a>
+    </nav>
+</header>
+
+<div class="container">
+    <aside class="sidebar">
+        <span class="filter-title">Бренд</span>
+        <div class="brand-item"><span><input type="checkbox"> Все</span></div>
+        <div class="brand-item"><span><input type="checkbox"> Los Raketos</span> <span>(1)</span></div>
+        <div class="brand-item"><span><input type="checkbox"> itsmybike</span> <span>(2)</span></div>
+    </aside>
+
+    <main class="main">
+        <div class="category-title">Аксессуары</div>
+        
+        <div class="grid">
+            <div class="card">
+                <div class="img-placeholder"><img src="https://itsmybike.ru" alt="Шлем"></div>
+                <div class="info">
+                    <div class="model-name">Велосипедный шлем Los Raketos FLASH Gradient Navy L-XL</div>
+                    <div class="price">5 750 ₽</div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="img-placeholder"><img src="https://itsmybike.ru" alt="Значок"></div>
+                <div class="info">
+                    <div class="model-name">Значок Заяц itsmybike</div>
+                    <div class="price">450 ₽</div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="img-placeholder"><img src="https://itsmybike.ru" alt="Фидбег"></div>
+                <div class="info">
+                    <div class="model-name">Фидбег it's mybike Зебра голубой</div>
+                    <div class="price">2 000 ₽</div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="img-placeholder"><img src="https://itsmybike.ru" alt="Полка"></div>
+                <div class="info">
+                    <div class="model-name">Полка для хранения велосипеда светло-коричневая</div>
+                    <div class="price">3 900 ₽</div>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
+
+</body>
+</html>

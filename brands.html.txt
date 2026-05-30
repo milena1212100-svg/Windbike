@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Бренды — Велосипедный магазин WindBike</title>
+    <style>
+        :root { --blue: #007bff; --light-gray: #f4f4f4; }
+        body { font-family: 'Helvetica', Arial, sans-serif; margin: 0; padding: 0; color: #333; }
+
+        header { text-align: center; padding: 20px 0; border-bottom: 1px solid #eee; }
+        .logo { max-width: 200px; margin-bottom: 15px; }
+        nav { display: flex; justify-content: center; gap: 20px; font-size: 13px; font-weight: bold; text-transform: uppercase; }
+        nav a { text-decoration: none; color: #333; }
+        nav a:hover { color: var(--blue); }
+
+        /* Остальные стили из исходного кода страницы брендов */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            color: #333;
+            background-color: #fff;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .container { display: flex; max-width: 1300px; margin: 30px auto; padding: 0 20px; }
+
+        .sidebar { width: 220px; flex-shrink: 0; font-size: 14px; }
+        .filter-title { font-weight: bold; border-bottom: 1px solid #ccc; padding-bottom: 5px; margin-bottom: 10px; display: block; }
+        .brand-item { display: flex; justify-content: space-between; margin-bottom: 8px; color: #666; }
+        .brand-item input { margin-right: 10px; }
+
+        .main { flex-grow: 1; padding-left: 40px; }
+        .category-title { font-size: 18px; margin-bottom: 20px; color: #555; }
+
+        .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
+
+        .card { position: relative; border: 1px solid #f0f0f0; padding-bottom: 15px; transition: 0.3s; }
+        .card:hover { box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
+
+        .badge { position: absolute; top: 10px; right: 10px; background: rgba(255,255,255,0.8); border: 1px solid #007bff; color: #007bff; padding: 2px 8px; font-size: 10px; text-transform: uppercase; font-weight: bold; }
+
+        .img-placeholder { width: 100%; height: 220px; background: #f9f9f9; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+        .img-placeholder img { width: 100%; height: auto; }
+
+        .info { padding: 15px; text-align: left; }
+        .price { font-weight: bold; font-size: 18px; margin-top: 10px; }
+        .model-name { font-size: 14px; height: 40px; overflow: hidden; color: #222; }
+
+        /* Контейнер списка брендов */
+        .brands-container {
+            max-width: 1200px;
+            width: 100%;
+            margin: 40px auto;
+            padding: 0 40px;
+            flex: 1;
+        }
+
+        .page-title {
+            font-size: 22px;
+            font-weight: bold;
+            color: #222;
+            margin-bottom: 25px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* Строка бренда */
+        .brand-row {
+            display: flex;
+            align-items: flex-start;
+            border-bottom: 1px solid #f0f0f0;
+            padding: 30px 0;
+            gap: 40px;
+            transition: background-color 0.2s;
+        }
+
+        .brand-row:hover {
+            background-color: #fbfbfb;
+        }
+
+        /* Логотипы / Плейсхолдеры брендов */
+        .brand-logo-box {
+            width: 180px;
+            height: 90px;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #f9f9f9;
+            font-weight: bold;
+            font-size: 18px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            border: 1px solid #eee;
+        }
+
+        /* Специфические стили для логотипов брендов со скриншота и новых */
+        .bg-6ku { background-color: #f39c12; color: #fff; font-size: 26px; border: none; }
+        .logo-abus { border: 2px solid #d32f2f; border-radius: 20px; color: #d32f2f; height: 45px; width: 110px; display: flex; align-items: center; justify-content: center; font-style: italic; background: #fff; font-size: 18px;}
+        .text-aeg { color: #800020; font-size: 24px; font-family: 'Georgia', serif; font-weight: bold; }
+        .text-asavers { color: #222; font-size: 13px; font-weight: normal; }
+        .text-fuji { font-family: 'Times New Roman', serif; font-size: 28px; font-style: italic; color: #111; letter-spacing: 2px; }
+        .text-tsunami { font-family: Impact, sans-serif; font-size: 26px; color: #000; font-style: italic; letter-spacing: 1px; }
+        .text-octopus { font-family: 'Courier New', monospace; font-size: 22px; color: #2c3e50; font-weight: bold; }
+
+        /* Описание бренда */
+        .brand-info {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 90px;
+        }
+
+        .brand-name {
+            font-size: 15px;
+            font-weight: bold;
+            color: #222;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+        }
+
+        .brand-description {
+            font-size: 13px;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .brand-link-wrapper {
+            text-align: right;
+            margin-top: 10px;
+        }
+
+        .brand-catalog-link {
+            font-size: 12px;
+            color: #4a90e2;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .brand-catalog-link:hover {
+            text-decoration: underline;
+        }
+
+        /* Подвал */
+        footer {
+            text-align: center;
+            padding: 25px 0;
+            border-top: 1px solid #e0e0e0;
+            font-size: 13px;
+            color: #aaa;
+            background-color: #fafafa
